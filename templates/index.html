@@ -1,0 +1,102 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Tool Description -->
+  <h1>Get Google Trends Queries and Topics</h1>
+
+  <!-- Parameters form -->
+  <form action="" method="post">
+
+    <!-- Keywords Input field -->
+    <p>Keywords (up to 5, separated by commas)</p>
+    <p><input type="text" name="keywords" /></p>
+
+    <!-- Submit button -->
+    <p><input type="submit" name="extract" value="Get Google Trends Queries and Topics"/></p>
+
+    <!-- Download button -->
+    <p><input type="submit" name="download" value="Download"/></p>
+
+    <!-- Results - Rising Topics -->
+	<h2>Topics: Rising</h2>
+    <table border="1">
+      <tr>
+        <th>Keyword</th>
+        <th>Value</th>
+        <th>Title</th>
+        <th>Type</th>
+      </tr>
+      {% for row in results['topics_rising'] %}
+      <tr>
+        <td>{{ row.keyword }}</td>
+        <td>{{ row.formattedValue }}</td>
+        <td>{{ row.topic_title }}</td>
+        <td>{{ row.topic_type }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <!-- Results - Top Topics -->
+	<h2>Topics: Top</h2>
+    <table border="1">
+      <tr>
+        <th>Keyword</th>
+        <th>Value</th>
+        <th>Title</th>
+        <th>Type</th>
+      </tr>
+      {% for row in results['topics_top'] %}
+      <tr>
+        <td>{{ row.keyword }}</td>
+        <td>{{ row.formattedValue }}</td>
+        <td>{{ row.topic_title }}</td>
+        <td>{{ row.topic_type }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </form>
+
+    <!-- Results - Rising Queries -->
+	<h2>Queries: Rising</h2>
+    <table border="1">
+      <tr>
+        <th>Keyword</th>
+        <th>Value</th>
+        <th>Query</th>
+      </tr>
+      {% for row in results['queries_rising'] %}
+      <tr>
+        <td>{{ row.keyword }}</td>
+        <td>{{ row.value }}</td>
+        <td>{{ row.query }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <!-- Results - Top Queries -->
+	<h2>Queries: Top</h2>
+    <table border="1">
+      <tr>
+        <th>Keyword</th>
+        <th>Value</th>
+        <th>Query</th>
+      </tr>
+      {% for row in results['queries_top'] %}
+      <tr>
+        <td>{{ row.keyword }}</td>
+        <td>{{ row.value }}</td>
+        <td>{{ row.query }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
